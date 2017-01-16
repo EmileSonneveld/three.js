@@ -172,6 +172,29 @@ Menubar.File = function ( editor ) {
 	} );
 	options.add( option );
 
+	// Export Scene
+
+	var option = new UI.Row();
+	option.setClass( 'option' );
+	option.setTextContent( 'Export Scene DAE' );
+	option.onClick( function () {
+
+		var object = editor.scene;
+
+		try {
+
+		var exporter = new THREE.DAESceneExporter();
+
+		saveString( exporter.parse( object ), 'scene.dae' );
+
+		} catch ( e ) {
+			console.warn(e);
+
+		}
+
+	} );
+	options.add( option );
+
 	// Export OBJ
 
 	var option = new UI.Row();
